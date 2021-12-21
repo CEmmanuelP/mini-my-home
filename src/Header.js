@@ -18,6 +18,7 @@ const HeaderContainer = styled.div`
     max-width: 1050px;
     height: 4rem;
     text-align: center;
+    margin: 0 auto;
 `;
 
 export default Header;
