@@ -14,6 +14,7 @@ const Layout = ({ children }) => {
 
 const Layouts = styled.div`
     width: 100%;
+    height: 100vh;
     min-width: 1050px;
     /* height: 100vh; */
     background-image: url("/img/background_msrh.png");
