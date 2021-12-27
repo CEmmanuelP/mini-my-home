@@ -59,6 +59,8 @@ const CardContainer = styled.div`
             margin: 0.5rem;
             vertical-align: middle;
             color: var(--color-purple);
+            background-color: #f3f3f3;
+            border-radius: 4px;
         }
     }
 `;
