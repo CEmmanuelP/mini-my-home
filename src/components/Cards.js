@@ -1,15 +1,21 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import Card from "./Card";
 
 const Cards = ({ data }) => {
+    useEffect(() => {
+        console.log(data);
+    }, []);
+
     return (
         <Container>
             <div className="cardAmount">
-                체육시설 수 : {data.list_total_count}개
+                체육시설 수 :{" "}
+                {data.list_total_count ? data.list_total_count : 0}개
             </div>
             <CardsContainer className="cards">
-                {data.row.map(() => {
-                    return <Card />;
+                {data.row.map((location) => {
+                    return <Card location={location} />;
                 })}
             </CardsContainer>
         </Container>

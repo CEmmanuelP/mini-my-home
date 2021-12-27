@@ -10,12 +10,13 @@ const Main = () => {
 
     useEffect(() => {
         fetchData();
+        console.log(data);
     }, []);
 
     const fetchData = async () => {
         try {
             //http://openAPI.seoul.go.kr:8088/485051717663687238356663674753/xml/ListPublicReservationSport/1/5/농구장
-            const url = `${config.SERVICE_URL}/${config.SERVICE_KEY}/json/ListPublicReservationSport/1/1000`;
+            const url = `${config.SERVICE_URL}/${config.SERVICE_KEY}/json/ListPublicReservationSport/1/54/농구장`;
             const res = await axios({
                 method: "GET",
                 url,
@@ -35,7 +36,7 @@ const Main = () => {
                     <input className="searchInput" />
                     <button className="searchButton">Search</button>
                 </div>
-                <Cards data={data} />
+                {data ? <Cards data={data} /> : <div>Loading...</div>}
             </div>
         </MainContainer>
     );
