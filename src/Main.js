@@ -5,19 +5,33 @@ import * as config from "./config";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { getDataAction } from "./store/redux";
+import Spinner from "./components/spinner";
+import Loader from "react-loader-spinner";
 
 const Main = () => {
+  // flag - 추가 데이터 로드 할지말지
+  const [fetching, setFetching] = useState(false);
+  const [page, setPage] = useState(0);
   const dispatch = useDispatch();
-  const { RESULT } = useSelector((state) => state.dataReducer);
+  const { RESULT, list_total_count, row } = useSelector(
+    (state) => state.dataReducer
+  );
 
   useEffect(() => {
     fetchData();
   }, []);
 
+  const fetchMoreFacility = async () => {
+    // flag true
+    setFetching(true);
+  };
+
   const fetchData = async () => {
     try {
       //http://openAPI.seoul.go.kr:8088/485051717663687238356663674753/xml/ListPublicReservationSport/1/5/농구장
-      const url = `${config.SERVICE_URL}/${config.SERVICE_KEY}/json/ListPublicReservationSport/1/54/농구장`;
+      const url = `${config.SERVICE_URL}/${
+        config.SERVICE_KEY
+      }/json/ListPublicReservationSport/${page + 1}/${page + 10}/농구장`;
       const res = await axios({
         method: "GET",
         url,
@@ -47,7 +61,11 @@ const Main = () => {
           <button className="searchButton">Search</button>
         </div>
         {/* <Cards /> */}
-        {RESULT ? <Cards /> : <div>Loading...</div>}
+        {RESULT ? (
+          <Cards list_total_count={list_total_count} row={row} />
+        ) : (
+          <Spinner />
+        )}
       </div>
     </MainContainer>
   );

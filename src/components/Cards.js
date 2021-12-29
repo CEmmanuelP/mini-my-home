@@ -4,12 +4,9 @@ import styled from "styled-components";
 import Card from "./Card";
 import { getDataAction } from "../store/redux";
 import { useSelector } from "react-redux";
+import Spinner from "./spinner";
 
-const Cards = ({ data }) => {
-  const { RESULT, list_total_count, row } = useSelector(
-    (state) => state.dataReducer
-  );
-
+const Cards = ({ list_total_count, row }) => {
   return (
     <Container>
       <div className="cardAmount">
@@ -43,7 +40,7 @@ const CardsContainer = styled.div`
   border: 1px solid orange;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 2rem;
+  grid-gap: 1.5rem;
   padding-bottom: 3rem;
   padding-top: 3rem;
   justify-items: center;
