@@ -13,6 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import FacilityCategory from "./FacilityCategory";
 import { useRef } from "react";
+import MapContainer from "./MapContainer";
 const { kakao } = window;
 
 const Facility = () => {
@@ -38,12 +39,12 @@ const Facility = () => {
         //     level: 3, //지도의 레벨(확대, 축소 정도)
         // };
         // const map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-        const container = document.getElementById("map");
-        const options = {
-            center: new kakao.maps.LatLng(33.450701, 126.570667),
-            level: 3,
-        };
-        const map = new kakao.maps.Map(container, options);
+        // const container = document.getElementById("map");
+        // const options = {
+        //     center: new kakao.maps.LatLng(33.450701, 126.570667),
+        //     level: 3,
+        // };
+        // const map = new kakao.maps.Map(container, options);
     }, []);
 
     const goReservation = () => {
@@ -98,7 +99,8 @@ const Facility = () => {
                             option={detail.V_MAX}
                         />
                     </div>
-                    <div className="map"></div>
+                    {/* <div className="map"></div> */}
+                    <MapContainer />
                 </Main>
             ) : (
                 ""
